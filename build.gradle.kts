@@ -19,6 +19,22 @@ tasks.test {
     useJUnitPlatform()
 }
 
+application {
+    mainClass.set("MainKt")
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "MainKt"
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+}
+
 kotlin {
     jvmToolchain(8)
 }
