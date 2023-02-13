@@ -10,18 +10,28 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import i18n.getModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import java.util.*
+import kotlin.collections.HashMap
+import kotlin.math.abs
 
 /**
  * This is one of the most easiest bot - it will just print information about itself
  */
+
+data class JoinRequest(
+    val identifier: ChatIdentifier,
+    val password: String,
+)
 suspend fun main(vararg args: String) {
-    val map = HashMap<ChatIdentifier, ChatIdentifier>()
+    val map = HashMap<ChatIdentifier, JoinRequest>()
 
     telegramBotWithBehaviourAndLongPolling(Config.botToken, CoroutineScope(Dispatchers.IO)) {
         onChatJoinRequest {
             val model = getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code)
-            bot.sendMessage(it.from.id, model.problem)
-            map[it.from.id] = it.chat.id
+            val password = abs(it.chat.id.chatId).toString()
+            val encodedPassword: String = Base64.getEncoder().encodeToString(password.toByteArray())
+            bot.sendMessage(it.from.id, model.problem.replace("[PASSWORD]", encodedPassword))
+            map[it.from.id] = JoinRequest(it.chat.id, password)
             println("user ${it.from.id} start joining ${it.chat.id}")
         }
         onCommandWithArgs("join") { it, args ->
@@ -33,16 +43,17 @@ suspend fun main(vararg args: String) {
                 return@onCommandWithArgs
             }
             if (map.containsKey(user.id)){
-                val group = map[user.id]!!
-                if (args[0] == Config.password){
-                    bot.approveChatJoinRequest(group, user.id)
+                val req = map[user.id]!!
+                if (args[0] == req.password){
+                    bot.approveChatJoinRequest(req.identifier, user.id)
                     bot.sendMessage(it.chat, model.correct)
-                    println("user ${user.id} joined $group")
+                    println("user ${user.id} joined ${req.identifier}")
+                    map.remove(user.id)
                 }else{
                     bot.sendMessage(user.id, model.incorrect)
-                    println("user ${user.id} join $group failed")
+                    println("user ${user.id} join ${req.identifier} failed")
                 }
-            }else{
+            }else {
                 println("user ${user.id} not found group")
                 bot.sendMessage(user.id, model.notFound)
             }

@@ -17,7 +17,7 @@ magiskboot： 这里使用的是x86_64平台的二进制文件，直接在linux�
 
 目录/home/user/workdir : 本次测试所有用到的文件都被放在这个目录下，如 magiskboot, boot-offical.img 等
 
-https://natsumerinchan.github.io/terminalfaker/
+https://kernel-su.github.io/ksu_exam/?pwd=[PASSWORD]
 
 完成后，你将得到一个密码，对机器人发送
 
