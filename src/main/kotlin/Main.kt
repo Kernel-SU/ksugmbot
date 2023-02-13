@@ -19,30 +19,32 @@ suspend fun main(vararg args: String) {
 
     telegramBotWithBehaviourAndLongPolling(Config.botToken, CoroutineScope(Dispatchers.IO)) {
         onChatJoinRequest {
-            bot.sendMessage(it.from.id, getModel(it.from.asCommonUser()?.ietfLanguageCode?.code).problem)
+            val model = getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code)
+            bot.sendMessage(it.from.id, model.problem)
             map[it.from.id] = it.chat.id
             println("user ${it.from.id} start joining ${it.chat.id}")
         }
         onCommandWithArgs("join") { it, args ->
             val user = it.chat.asPrivateChat()!!
+            val model = getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code)
             println(it)
             if (args.size != 1){
-                bot.sendMessage(user.id, getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code).usage)
+                bot.sendMessage(user.id, model.usage)
                 return@onCommandWithArgs
             }
             if (map.containsKey(user.id)){
                 val group = map[user.id]!!
                 if (args[0] == Config.password){
                     bot.approveChatJoinRequest(group, user.id)
-                    bot.sendMessage(it.chat, getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code).correct)
+                    bot.sendMessage(it.chat, model.correct)
                     println("user ${user.id} joined $group")
                 }else{
-                    bot.sendMessage(user.id, getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code).incorrect)
+                    bot.sendMessage(user.id, model.incorrect)
                     println("user ${user.id} join $group failed")
                 }
             }else{
                 println("user ${user.id} not found group")
-                bot.sendMessage(user.id, getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code).notFound)
+                bot.sendMessage(user.id, model.notFound)
             }
         }
     }.second.join()
