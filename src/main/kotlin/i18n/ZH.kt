@@ -13,6 +13,8 @@ terminalfaker内置命令(可键入help查看) : status, adb, fastboot, magiskbo
 
 magiskboot： 这里使用的是x86_64平台的二进制文件，直接在linux终端操作即可，无需尝试将它和boot.img推送至手机。
  
+status: 用于检查设备状态(system/bootloader/fastbootd/recovery)
+
 在terminalfaker中执行任何命令都不要加上“./”
 
 目录/home/user/workdir : 本次测试所有用到的文件都被放在这个目录下，如 magiskboot, boot-offical.img 等
