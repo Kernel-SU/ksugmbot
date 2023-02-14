@@ -23,7 +23,7 @@ https://kernel-su.github.io/ksu_exam/?pwd=[PASSWORD]
 
 完成后，你将得到一个密码，对机器人发送
 
-/join [你得到的密码]
+/join [你得到的密码] (例如 /join 123456)
 
 即可进群
 """.trimIndent(),

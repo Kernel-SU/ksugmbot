@@ -23,7 +23,7 @@ https://kernel-su.github.io/ksu_exam/?pwd=[PASSWORD]
 
 Once done, you will be given a password to send to the robot
 
-/join [password]
+/join [password] (Such as /join 123456)
 
 And the invitation will be approved automatically!
 """.trimIndent(),
