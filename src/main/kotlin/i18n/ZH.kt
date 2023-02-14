@@ -4,12 +4,12 @@ val ZH = Model(
     lang = "zh",
     problem = """
 题目：
-这里有一台内核版本为5.10.81-android12-9-xxxx-xxxx，Android版本为13的GKI设备，内核压缩方式未知，请在网站上认真翻阅教程后为该设备刷入正确版本和压缩格式的镜像。
+这里有一台内核版本为5.10.81-android12-9-xxxx-xxxx，Android版本为13的GKI 2.0设备，内核压缩方式未知，请在网站上认真翻阅教程后为该设备刷入正确版本和压缩格式的镜像。
 
 条件：
-系统状态：已进入bootloader(fastboot)
+设备状态：已进入系统
 
-terminalfaker内置命令(可键入help查看) : fastboot, magiskboot, cd, ls, cat, clear, echo, help, history, pwd, reboot, rm, touch, uname, version, whoami
+terminalfaker内置命令(可键入help查看) : status, adb, fastboot, magiskboot, cd, ls, cat, clear, echo, help, history, pwd, reboot, rm, touch, uname, version, whoami
 
 magiskboot： 这里使用的是x86_64平台的二进制文件，直接在linux终端操作即可，无需尝试将它和boot.img推送至手机。
  
