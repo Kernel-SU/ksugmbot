@@ -19,7 +19,7 @@ Do not add "./" to execute any command in terminalfaker
 
 Directory /home/user/workdir : All the files used in this test are placed in this directory, such as magiskboot, boot-offical.img, etc
 
-https://kernel-su.github.io/ksu_exam/?pwd=[PASSWORD]
+https://exam.kernelsu.org/?pwd=[PASSWORD]
 
 Once done, you will be given a password to send to the robot
 

@@ -19,7 +19,7 @@ status: 用于检查设备状态(system/bootloader/fastbootd/recovery)
 
 目录/home/user/workdir : 本次测试所有用到的文件都被放在这个目录下，如 magiskboot, boot-offical.img 等
 
-https://kernel-su.github.io/ksu_exam/?pwd=[PASSWORD]
+https://exam.kernelsu.org/?pwd=[PASSWORD]
 
 完成后，你将得到一个密码，对机器人发送
 
