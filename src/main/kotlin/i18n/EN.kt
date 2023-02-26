@@ -4,7 +4,7 @@ val EN = Model(
     lang = "en",
     problem = """
 Q:
-There is a GKI 2.0 device with kernel version 5.10.81-android12-9-xxxx-xxxx, android version 13, The kernel compression method is unknown, please read the tutorial carefully on the website and flash the image of the correct version and compression format for the device.
+There is a GKI 2.0 device with kernel version 5.10.117-android12-9-xxxx-xxxx, android version 13, The kernel compression method is unknown, please read the tutorial carefully on the website and flash the image of the correct version and compression format for the device.
 
 Condition:
 Device Status：OS is booted
