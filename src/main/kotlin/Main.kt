@@ -25,7 +25,14 @@ data class JoinRequest(
 suspend fun main(vararg args: String) {
     val map = HashMap<ChatIdentifier, JoinRequest>()
 
-    telegramBotWithBehaviourAndLongPolling(Config.botToken, CoroutineScope(Dispatchers.IO)) {
+    if (args.size != 1){
+        println("Invalid BotToken")
+        return
+    }
+
+    println("BotToken: ${args[0]}")
+
+    telegramBotWithBehaviourAndLongPolling(args[0], CoroutineScope(Dispatchers.IO)) {
         onChatJoinRequest {
             val model = getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code)
             val password = abs(it.chat.id.chatId).toString()
