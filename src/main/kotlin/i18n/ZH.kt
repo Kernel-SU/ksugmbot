@@ -17,7 +17,7 @@ status: 用于检查设备状态(system/bootloader/fastbootd/recovery)
 
 在terminalfaker中执行任何命令都不要加上“./”
 
-目录/home/user/workdir : 本次测试所有用到的文件都被放在这个目录下，如 magiskboot, boot-offical.img 等
+目录/home/user/workdir : 本次测试所有用到的文件都被放在这个目录下，如 magiskboot, boot-official.img 等
 
 https://exam.kernelsu.org/?pwd=[PASSWORD]
 

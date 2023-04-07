@@ -17,7 +17,7 @@ status: Used to check the device status (system/bootloader/fastbootd/recovery).
 
 Do not add "./" to execute any command in terminalfaker
 
-Directory /home/user/workdir : All the files used in this test are placed in this directory, such as magiskboot, boot-offical.img, etc
+Directory /home/user/workdir : All the files used in this test are placed in this directory, such as magiskboot, boot-official.img, etc
 
 https://exam.kernelsu.org/?pwd=[PASSWORD]
 
