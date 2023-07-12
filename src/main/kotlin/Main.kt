@@ -36,7 +36,8 @@ suspend fun main(vararg args: String) {
         onChatJoinRequest {
             val model = getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code)
             val password = abs(it.chat.id.chatId).toString()
-            val encodedPassword: String = Base64.getEncoder().encodeToString(password.toByteArray())
+            val fakepassword = (password.toInt() + 20221209).toString()
+            val encodedPassword: String = Base64.getEncoder().encodeToString(fakepassword.toByteArray())
             bot.sendMessage(it.from.id, model.problem.replace("[PASSWORD]", encodedPassword))
             map[it.from.id] = JoinRequest(it.chat.id, password)
             println("user ${it.from.id} start joining ${it.chat.id}")

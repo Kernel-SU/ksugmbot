@@ -22,6 +22,11 @@ jobs:
         cache: gradle
     - name: Build
       run: |
+        cd $GITHUB_WORKSPACE/src/main/kotlin
+        if [ ! -z "${{ secrets.NUMBER }}" ]; then
+          sed -i "s/20221209/"${{ secrets.NUMBER }}"/" ./Main.kt
+        fi
+        cd $GITHUB_WORKSPACE
         chmod +x ./gradlew
         ./gradlew jar
     - name: Upload build artifact
