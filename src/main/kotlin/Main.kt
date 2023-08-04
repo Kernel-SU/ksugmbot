@@ -205,9 +205,9 @@ suspend fun main(vararg args: String) {
             for (i in 1..passwordLength-1) {
                 start *= 10;
             }
-            val password = Random.nextLong(start, (start * 10) - 1)
+            val password = Random.nextLong(start, (start * 10) - 1).toString()
             val secret = "20221209"
-            val fakepassword = XXTEA.encrypt(password.toString(), secret)
+            val fakepassword = XXTEA.encrypt(password, secret)
             val encodedPassword: String = Base64.getEncoder().encodeToString(fakepassword)
             bot.sendMessage(it.from.id, model.problem.replace("[PASSWORD]", encodedPassword))
             map[it.from.id] = JoinRequest(it.chat.id, password)
