@@ -12,7 +12,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import java.util.*
 import kotlin.collections.HashMap
-import kotlin.math.abs
+import kotlin.math.absoluteValue
+import kotlin.random.Random
 
 /**
  * This is one of the most easiest bot - it will just print information about itself
@@ -199,7 +200,12 @@ suspend fun main(vararg args: String) {
     telegramBotWithBehaviourAndLongPolling(args[0], CoroutineScope(Dispatchers.IO)) {
         onChatJoinRequest {
             val model = getModel(it.from?.asCommonUser()?.ietfLanguageCode?.code)
-            val password = abs(it.chat.id.chatId).toString()
+            val passwordLength = (it.chat.id.chatId).absoluteValue.toString().length
+            var start: Long = 1;
+            for (i in 1..passwordLength-1) {
+                start *= 10;
+            }
+            val password = Random.nextLong(start, (start * 10) - 1)
             val secret = "20221209"
             val fakepassword = XXTEA.encrypt(password.toString(), secret)
             val encodedPassword: String = Base64.getEncoder().encodeToString(fakepassword)
