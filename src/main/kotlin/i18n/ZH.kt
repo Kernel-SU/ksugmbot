@@ -4,7 +4,10 @@ val ZH = Model(
     lang = "zh",
     problem = """
 题目：
-这里有一台内核版本为5.10.117-android12-9-xxxx-xxxx，Android版本为13的GKI 2.0设备，内核压缩方式未知，请在网站上认真翻阅教程后为该设备刷入正确版本和压缩格式的镜像。
+这里有一台内核版本为5.10.157-android12-9-xxxx-xxxx，Android版本为13的GKI 2.0设备，内核压缩方式未知，请在网站上认真翻阅教程后为该设备刷入正确版本和压缩格式的镜像。
+
+教程链接：
+https://kernelsu.org/zh_CN/guide/installation.html
 
 条件：
 设备状态：已进入系统
