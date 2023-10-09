@@ -1,19 +1,9 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 /**
  * @author weishu
  * @date 2023/10/9.
  */
-public class MaxSizeHashMap<K, V> extends LinkedHashMap<K, V> {
-    private final int maxSize;
-
-    public MaxSizeHashMap(int maxSize) {
-        this.maxSize = maxSize;
-    }
-
-    @Override
-    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-        return size() > maxSize;
+class MaxSizeHashMap<K, V>(private val maxSize: Int) : LinkedHashMap<K, V>() {
+    override fun removeEldestEntry(eldest: Map.Entry<K, V>): Boolean {
+        return size > maxSize
     }
 }
