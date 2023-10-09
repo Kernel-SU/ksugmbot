@@ -14,6 +14,7 @@ import java.util.*
 import kotlin.collections.HashMap
 import kotlin.math.absoluteValue
 import kotlin.random.Random
+import MaxSizeHashMap
 
 /**
  * This is one of the most easiest bot - it will just print information about itself
