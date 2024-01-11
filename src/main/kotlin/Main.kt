@@ -190,11 +190,15 @@ object XXTEA {
 
 suspend fun main(vararg args: String) {
     val map = MaxSizeHashMap<ChatIdentifier, JoinRequest>(128)
-
-    if (args.size != 1){
-        println("Invalid BotToken")
+    if (args.size != 2){
+        println("Usage: java -jar ksugmbot.jar {BotToken} {secret}")
         return
     }
+
+    val secret = args[1]
+    val fakepassword = XXTEA.encrypt("ksu2023usk", secret)
+    val encodedPassword: String = Base64.getEncoder().encodeToString(fakepassword)
+    println(encodedPassword)
 
     println("BotToken: ${args[0]}")
 
@@ -207,7 +211,6 @@ suspend fun main(vararg args: String) {
                 start *= 10;
             }
             val password = Random.nextLong(start, (start * 10) - 1).toString()
-            val secret = "20221209"
             val fakepassword = XXTEA.encrypt(password, secret)
             val encodedPassword: String = Base64.getEncoder().encodeToString(fakepassword)
             bot.sendMessage(it.from.id, model.problem.replace("[PASSWORD]", encodedPassword))
